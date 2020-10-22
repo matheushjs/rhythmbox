@@ -243,12 +243,12 @@ use_no_strict_aliasing = cc.has_argument('-fno-strict-aliasing')
 #PLUGIN_LIBTOOL_FLAGS="-module -avoid-version"
 #AC_SUBST(PLUGIN_LIBTOOL_FLAGS)
 #
-plugindir = get_option('libdir') + '/rhythmbox/plugins'
-cdata.set('PLUGINDIR', get_option('prefix') + '/' + plugindir)
+plugindir = get_option('prefix') / get_option('libdir') / 'rhythmbox/plugins'
+cdata.set('PLUGINDIR', plugindir)
 
-plugindatadir = get_option('datadir') + '/rhythmbox/plugins'
-cdata.set('PLUGINDATADIR', get_option('prefix') + '/' + plugindatadir)
-cdata.set('SAMPLEPLUGINDIR', get_option('libdir') + '/rhythmbox/sample-plugins')
+plugindatadir = get_option('prefix') / get_option('datadir') / 'rhythmbox/plugins'
+cdata.set('PLUGINDATADIR',  plugindatadir)
+cdata.set('SAMPLEPLUGINDIR', get_option('prefix') / get_option('libdir') / 'rhythmbox/sample-plugins')
 
 enable_python = false
 if get_option('python-plugins') != 'no'
